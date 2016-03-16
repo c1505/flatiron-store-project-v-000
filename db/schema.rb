@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20160316013412) do
 
-  create_table "cart", force: :cascade do |t|
+  create_table "carts", force: :cascade do |t|
     t.integer "user_id"
   end
 
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160316013412) do
 
   create_table "line_items", force: :cascade do |t|
     t.integer "cart_id"
-    t.integer "line_id"
+    t.integer "item_id"
     t.integer "quantity"
   end
 

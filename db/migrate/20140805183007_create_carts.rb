@@ -1,6 +1,6 @@
 class CreateCarts < ActiveRecord::Migration
   def change
-    create_table :cart do |t|
+    create_table :carts do |t|
       t.integer :user_id
     end
   end
