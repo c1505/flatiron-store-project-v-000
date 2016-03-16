@@ -1,1 +1,39 @@
-notes
+Carts
+  relationships
+    -has_many :items, through: :line_items
+    -has_many :line_items
+    -belongs_to :user
+
+Item
+  title:string
+  inventory:integer
+  price:integer
+  belongs_to :category
+
+LineItem
+  cart_id:integer
+  item_id:integer
+  belongs_to :cart
+  belongs_to :item
+
+Category
+  title:string
+  has_many :items
+
+User 
+  email:string
+  password:string
+
+  has_many :carts
+
+corey
+
+spec ./spec/features/store_home_feature_spec.rb:90 # Feature Test: Store Headers has a Store Home Link
+rspec ./spec/features/store_home_feature_spec.rb:54 # Feature Test: Store Headers not logged in has a sign in link
+rspec ./spec/features/store_home_feature_spec.rb:59 # Feature Test: Store Headers not logged in has a sign up link
+rspec ./spec/features/store_home_feature_spec.rb:72 # Feature Test: Store Headers logged in tells the user who they are signed in as
+rspec ./spec/features/store_home_feature_spec.rb:77 # Feature Test: Store Headers logged in has a sign out link
+rspec ./spec/features/store_home_feature_spec.rb:82 # Feature Test: Store Headers logged in lets users sign out
+
+
+

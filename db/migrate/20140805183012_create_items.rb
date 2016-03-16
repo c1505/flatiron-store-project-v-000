@@ -4,6 +4,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :title
       t.integer :inventory
       t.integer :price
+      t.integer :category_id
     end
   end
 end
