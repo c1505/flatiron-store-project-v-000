@@ -1,3 +1,12 @@
+SEPARATE BRANCHES ! 
+-changes
+  -generated views with devise
+  -modified index view for price
+    -seems odd to store as integer and then convert to price after.  maybe that is a typical pattern.  different opinions http://stackoverflow.com/questions/3063968/string-decimal-or-float-datatype-for-price-field
+  -looks like the a user is not being created with the store_home spec causeing it to fail
+
+
+
 Carts
   relationships
     -has_many :items, through: :line_items
@@ -34,6 +43,26 @@ rspec ./spec/features/store_home_feature_spec.rb:59 # Feature Test: Store Header
 rspec ./spec/features/store_home_feature_spec.rb:72 # Feature Test: Store Headers logged in tells the user who they are signed in as
 rspec ./spec/features/store_home_feature_spec.rb:77 # Feature Test: Store Headers logged in has a sign out link
 rspec ./spec/features/store_home_feature_spec.rb:82 # Feature Test: Store Headers logged in lets users sign out
+
+Feature Test: Store
+  Category List
+    displays all of the categories as links (FAILED - 1)
+  Item List
+    displays all items that have inventory (FAILED - 2)
+    not logged in
+      does not display "Add To Cart" button
+    logged in
+      does display "Add To Cart" button (FAILED - 3)
+  Headers
+    has a Store Home Link (FAILED - 4)
+    does not have a Cart link
+    not logged in
+      has a sign in link (FAILED - 5)
+      has a sign up link (FAILED - 6)
+    logged in
+      tells the user who they are signed in as (FAILED - 7)
+      has a sign out link (FAILED - 8)
+      lets users sign out (FAILED - 9)
 
 
 
