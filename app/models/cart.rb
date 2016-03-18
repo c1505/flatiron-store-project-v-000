@@ -4,7 +4,8 @@ class Cart < ActiveRecord::Base
   belongs_to :user
 
   def total
-    line_items.inject(0) {|sum, line_item| sum + (line_item.item.price * line_item.quantity ) }
+    # line_items.inject(0) {|sum, line_item| sum + (line_item.item.price * line_item.quantity ) }
+    line_items.map {|line_item| line_item.item.price * line_item.quantity}.reduce(:+)
   end
 
   def add_item(item_id)

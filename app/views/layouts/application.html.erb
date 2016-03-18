@@ -12,7 +12,9 @@
   <%= render 'layouts/header' %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-
+  <% if user_signed_in? && !current_user.current_cart.nil? %>
+    <%= link_to "Cart", cart_path(current_user.current_cart) %> 
+  <% end %>
   <%= yield %>
 
 </body>
