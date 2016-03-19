@@ -4,7 +4,6 @@ class Cart < ActiveRecord::Base
   belongs_to :user
 
   def total
-    # line_items.inject(0) {|sum, line_item| sum + (line_item.item.price * line_item.quantity ) }
     line_items.map {|line_item| line_item.item.price * line_item.quantity}.reduce(:+)
   end
 
@@ -16,5 +15,14 @@ class Cart < ActiveRecord::Base
       line_item.quantity += 1
     end
     line_item
+  end
+
+  def checkout
+    line_items.each do |line_item|
+      line_item.update_inventory
+    end
+    user.current_cart.status = "submitted"
+    user.current_cart.save
+    user.current_cart = nil
   end
 end

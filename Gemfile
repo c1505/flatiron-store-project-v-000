@@ -39,6 +39,7 @@ group :test, :development do
   gem "pry"
   gem "guard-rspec", require: false
   gem "thin"
+  # gem 'rubocop', require: false
 end
 
 group :production do
